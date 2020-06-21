@@ -20,30 +20,34 @@ public class StringCalculator {
 		//check if data has a custom delimiter (case #3)
 		if(numbers.startsWith("//")) {
 			
-			//get the delimiter
+			//get the delimiter (remove the '//')
 			String delimiter = numbers.substring(2, numbers.indexOf("\n")).trim();
 			numbers = numbers.split("\n")[1];
 			
 			//check if delimiter is more than 1 (Bonus case)
-			if(delimiter.trim().contains(",") && delimiter.trim().length()>3) {
-				String[] delimiters = delimiter.split(",");
+			if(delimiter.trim().contains(",")) {
 				
-				//build newDelimiters for bonus case
-			    String newDelimiters="";
-			    
-			    int i=0;
-			    for (String string : delimiters) {
-					newDelimiters += Pattern.quote(string);
-					if(i!=0 || i<delimiters.length)
-						newDelimiters += "|";
-				} 
-			   
-				splits = numbers.split(newDelimiters);
+				//custom delimiter, but ',' is the delimiter
+				if(delimiter.trim().length()==3) {
+					splits = numbers.split(Pattern.quote(delimiter));			
+				}
+				//more than 1 delimiter
+				else {
+					String[] delimiters = delimiter.split(",");
+					
+					//build newDelimiters for bonus case
+				    String newDelimiters="";
+				    
+				    int i=0;
+				    for (String string : delimiters) {
+						newDelimiters += Pattern.quote(string);
+						if(i!=0 || i<delimiters.length)
+							newDelimiters += "|";
+					}
+				    splits = numbers.split(newDelimiters);
+				}	   
 			}
-			//custom delimiter with , as delimiter
-			else if(delimiter.trim().contains(",") && delimiter.trim().length()==3) {
-				splits = numbers.split(Pattern.quote(delimiter));			
-			}else {
+			else {
 				splits = numbers.split(Pattern.quote(delimiter));  // use Pattern.quote() to ignore regex metacharacter
 			}
 		}
