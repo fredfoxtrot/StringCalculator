@@ -25,7 +25,7 @@ public class StringCalculator {
 			numbers = numbers.split("\n")[1];
 			
 			//check if delimiter is more than 1 (Bonus case)
-			if(delimiter.contains(",")) {
+			if(delimiter.trim().contains(",") && delimiter.trim().length()>3) {
 				String[] delimiters = delimiter.split(",");
 				
 				//build newDelimiters for bonus case
@@ -39,6 +39,10 @@ public class StringCalculator {
 				} 
 			   
 				splits = numbers.split(newDelimiters);
+			}
+			//custom delimiter with , as delimiter
+			else if(delimiter.trim().contains(",") && delimiter.trim().length()==3) {
+				splits = numbers.split(Pattern.quote(delimiter));			
 			}else {
 				splits = numbers.split(Pattern.quote(delimiter));  // use Pattern.quote() to ignore regex metacharacter
 			}

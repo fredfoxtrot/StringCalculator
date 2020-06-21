@@ -14,6 +14,7 @@ public class MainClass {
 		numbers.add("//;\n1;3;4"); //8
 		numbers.add("//$\n1$2$3"); //6
 		numbers.add("//@\n2@3@8"); //13
+		numbers.add("//,\n1,2,5"); //8
 		numbers.add("99999,8888,1,3"); //4
 		numbers.add("//***\n1***2***3"); //6
 		numbers.add("//$$,@\n1$$2@3$$4$$5@1"); //16

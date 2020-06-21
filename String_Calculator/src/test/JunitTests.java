@@ -14,7 +14,7 @@ public class JunitTests {
 	 * I include the junir.jar in the project package to make sure that it will run right of the box.
 	 */
    @Test
-   public void testadd() {
+   public void testAdd() {
     
 	    //sample test cases #1 
 		assertEquals(StringCalculator.add("1,2,5"),8);
@@ -36,11 +36,11 @@ public class JunitTests {
 		assertEquals(StringCalculator.add("//@\n2@3@8"),13);
 		assertEquals(StringCalculator.add("//&\n1&1&1"),3);
 		assertEquals(StringCalculator.add("// $ \n 1 $ 2 $ 3 "),6);
-		//assertEquals(StringCalculator.add("//,\n 2,3, 8"),13);
+		assertEquals(StringCalculator.add("//,\n 2,3, 8"),13);
 		
 		//sample test cases #4
-		//assertEquals(StringCalculator.add("//$$$\n-2$$$3$$$-1"),"Negatives not allowed : -2 -1");
-		//assertEquals(StringCalculator.add("-1,-2,-5"),"Negatives not allowed : -1 -2 -5");
+		assertEquals(StringCalculator.add("//$$$\n-2$$$3$$$-1"),3);
+		assertEquals(StringCalculator.add("-1,-2,-5"),0);
 		
 		//sample test cases for bonus 
 		assertEquals(StringCalculator.add("1001,2,9,3040"),11);
